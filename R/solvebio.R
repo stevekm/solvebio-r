@@ -79,6 +79,31 @@ createEnv <- function(token, token_type="Token", host="https://api.solvebio.com"
 # Private API request method.
 .request = function(method, path, query, body, env = solvebio:::.solveEnv, ...) {
     'Perform an HTTP request to the server.'
+    cat(sprintf("[%s] ------- --------- \n", format(Sys.time(), "%H:%M:%S")), 
+        file = '/Users/steve/projects/SolveBio/shiny-solvebio-boilerplate/log.txt', append = TRUE)
+    
+    cat(sprintf("[%s] names(env) is %s\n", format(Sys.time(), "%H:%M:%S"), names(env)), 
+        file = '/Users/steve/projects/SolveBio/shiny-solvebio-boilerplate/log.txt', append = TRUE)
+    
+    cat(sprintf("[%s] ls(envir = env) is %s\n", format(Sys.time(), "%H:%M:%S"), ls(envir = env)), 
+        file = '/Users/steve/projects/SolveBio/shiny-solvebio-boilerplate/log.txt', append = TRUE)
+    
+    cat(sprintf("[%s] objects(envir = env) is %s\n", format(Sys.time(), "%H:%M:%S"), objects(envir = env)), 
+        file = '/Users/steve/projects/SolveBio/shiny-solvebio-boilerplate/log.txt', append = TRUE)
+    
+    cat(sprintf("[%s] env$token is %s\n", format(Sys.time(), "%H:%M:%S"), env$token), 
+        file = '/Users/steve/projects/SolveBio/shiny-solvebio-boilerplate/log.txt', append = TRUE)
+    
+    for(i in seq(length(names(env)))){
+        iobj_name <- names(env)[i]
+        
+        # cat(sprintf("[%s] iobj_name is %s\n", format(Sys.time(), "%H:%M:%S"), iobj_name), 
+        #     file = '/Users/steve/projects/SolveBio/shiny-solvebio-boilerplate/log.txt', append = TRUE)
+        
+        cat(sprintf("[%s] %s : %s\n", format(Sys.time(), "%H:%M:%S"), iobj_name, env[[iobj_name]]), 
+            file = '/Users/steve/projects/SolveBio/shiny-solvebio-boilerplate/log.txt', append = TRUE)
+    }
+    
     # Set defaults
     headers <- c(
                  Accept = "application/json",

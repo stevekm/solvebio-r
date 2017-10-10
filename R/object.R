@@ -290,7 +290,7 @@ Object.upload_file <- function(local_path, vault_id, vault_path, filename, env =
     }
     else {
         # Create all folders as necessary in the vault path
-        parent_object = Object.get_by_path(path=vault_path, vault_id=vault_id, env=env)
+        parent_object = Object.get_by_path(env=env, path=vault_path, vault_id=vault_id)
         if (is.null(parent_object)) {
             parent_object = Vault.create_folder(
                                                 id=vault_id,
